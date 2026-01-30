@@ -1,4 +1,3 @@
-import WhatsappButton from "../../Common/WhatsappButton/WhatsappButton";
 import CourseOverviewSection from "./CourseOverviewSection/CourseOverviewSection";
 import DawraRoutineSection from "./DawraRoutineSection/DawraRoutineSection";
 import GirlsStudySection from "./GirlsStudySection/GirlsStudySection";
@@ -11,7 +10,6 @@ import WhyUsSection from "./WhyUsSection/WhyUsSection";
 const Home = () => {
     return (
         <div>
-            <WhatsappButton />
             <Hero />
             <Teachers />
             <WhyUsSection />

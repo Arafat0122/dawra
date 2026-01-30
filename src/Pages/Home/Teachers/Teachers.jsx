@@ -80,11 +80,17 @@ const Teachers = () => {
                                 </div>
 
                                 {/* Floating Info Plate */}
-                                <div className="absolute bottom-0 left-0 w-full p-8 text-center text-white">
-                                    <h3 className="text-2xl font-serif mb-1 group-hover:text-sky-200 transition-colors">
+                                <div className="absolute bottom-0 left-0 w-full p-6 text-center bg-gradient-to-t from-slate-950 via-slate-900/80 to-transparent pt-12">
+                                    {/* Name: Bold, Large, and tight leading to handle 2-line names */}
+                                    <h3 className="text-2xl md:text-xl font-serif font-bold text-white leading-[1.1] mb-2 drop-shadow-md group-hover:text-sky-300 transition-colors duration-300">
                                         {t.name}
                                     </h3>
-                                    <p className="text-sky-300 text-[10px] uppercase tracking-[0.2em] font-black">
+
+                                    {/* Divider: Small visual break to separate the long text */}
+                                    <div className="w-8 h-[2px] bg-sky-500 mx-auto mb-3 rounded-full opacity-60" />
+
+                                    {/* Designation: Clamped to 2 lines with tight tracking */}
+                                    <p className="text-sky-100/90 text-[10px] md:text-[11px] leading-relaxed uppercase tracking-widest font-bold px-2 line-clamp-2">
                                         {t.designation}
                                     </p>
                                 </div>
@@ -115,58 +121,86 @@ const Teachers = () => {
             {/* --- REFINED MODAL: The Scholarly Cloud --- */}
             <AnimatePresence>
                 {selectedTeacher && (
-                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center md:p-6">
+                        {/* Backdrop */}
                         <motion.div
-                            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
                             onClick={() => setSelectedTeacher(null)}
-                            className="absolute inset-0 bg-sky-950/40 backdrop-blur-xl"
+                            className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
                         />
 
+                        {/* Modal Card */}
                         <motion.div
                             layoutId={`teacher-${selectedTeacher.name}`}
-                            className="relative bg-white w-full max-w-5xl rounded-[3rem] shadow-3xl overflow-hidden flex flex-col lg:flex-row h-fit max-h-[90vh]"
+                            className="relative bg-white w-full h-full md:h-fit md:max-h-[90vh] md:max-w-5xl md:rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row"
                         >
-                            {/* Visual Side with Arch Masking */}
-                            <div className="lg:w-1/2 relative bg-sky-50 p-8 flex items-center justify-center">
-                                <div className="w-full h-[400px] lg:h-[500px] rounded-t-full rounded-b-2xl overflow-hidden border-8 border-white shadow-lg">
-                                    <img src={selectedTeacher.profilePhoto} className="w-full h-full object-cover" alt="" />
-                                </div>
-                            </div>
+                            {/* Fixed Close Button for Mobile Accessibility */}
+                            <button
+                                onClick={() => setSelectedTeacher(null)}
+                                className="absolute top-4 right-4 z-[110] w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-lg flex items-center justify-center text-slate-900 hover:bg-white transition-all md:top-8 md:right-8"
+                            >
+                                <FiX size={20} />
+                            </button>
 
-                            {/* Textual Side */}
-                            <div className="lg:w-1/2 p-10 lg:p-16 overflow-y-auto">
-                                <button
-                                    onClick={() => setSelectedTeacher(null)}
-                                    className="absolute top-8 right-8 w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:text-sky-600 transition-colors"
-                                >
-                                    <FiX size={24} />
-                                </button>
+                            {/* Main Scrollable Area */}
+                            <div className="flex flex-col md:flex-row w-full overflow-y-auto">
 
-                                <div className="mb-12">
-                                    <span className="text-sky-600 font-black text-[10px] uppercase tracking-[0.3em]">Distinguished Faculty</span>
-                                    <h2 className="text-5xl font-serif text-slate-900 mt-2">{selectedTeacher.name}</h2>
-                                    <p className="text-slate-400 italic mt-2">{selectedTeacher.designation}</p>
-                                </div>
-
-                                <div className="space-y-10">
-                                    <div>
-                                        <h4 className="flex items-center gap-3 text-sky-900 font-bold uppercase text-[10px] tracking-[0.2em] mb-6">
-                                            <FiBook className="text-sky-500" /> Academic Lineage
-                                        </h4>
-                                        <div className="grid grid-cols-1 gap-4">
-                                            {Object.entries(selectedTeacher.education).map(([key, val], idx) => (
-                                                <div key={idx} className="group p-4 rounded-2xl bg-sky-50/50 border border-sky-100 hover:bg-white hover:shadow-md transition-all">
-                                                    <span className="block text-[9px] text-sky-400 font-black uppercase mb-1">{key}</span>
-                                                    <span className="text-slate-700 font-medium leading-relaxed">{val}</span>
-                                                </div>
-                                            ))}
-                                        </div>
+                                {/* 1. Image Section - Now part of the scroll on mobile */}
+                                <div className="w-full md:w-1/2 bg-sky-50 flex-shrink-0">
+                                    <div className="relative w-full h-[60vh] md:h-full min-h-[400px]">
+                                        <img
+                                            src={selectedTeacher.profilePhoto}
+                                            className="w-full h-full object-cover object-top"
+                                            alt={selectedTeacher.name}
+                                        />
+                                        {/* Decorative Gradient Overlay for Mobile */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-sky-50 via-transparent to-transparent md:hidden" />
                                     </div>
                                 </div>
 
-                                <button className="mt-12 w-full py-5 bg-sky-600 text-white rounded-2xl font-bold shadow-lg shadow-sky-600/20 hover:bg-sky-700 transition-all transform hover:-translate-y-1">
-                                    Inquire About Courses
-                                </button>
+                                {/* 2. Textual Content Side */}
+                                <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 bg-white">
+                                    <div className="mb-8">
+                                        <span className="text-sky-600 font-black text-[10px] uppercase tracking-[0.3em]">
+                                            Distinguished Faculty
+                                        </span>
+                                        <h2 className="text-4xl md:text-5xl font-serif text-slate-900 mt-2">
+                                            {selectedTeacher.name}
+                                        </h2>
+                                        <p className="text-slate-500 italic mt-2 text-lg">
+                                            {selectedTeacher.designation}
+                                        </p>
+                                    </div>
+
+                                    <div className="space-y-8">
+                                        <div>
+                                            <h4 className="flex items-center gap-3 text-sky-900 font-bold uppercase text-[10px] tracking-[0.2em] mb-4">
+                                                <FiBook className="text-sky-500" /> Academic Lineage
+                                            </h4>
+                                            <div className="grid grid-cols-1 gap-3">
+                                                {Object.entries(selectedTeacher.education).map(([key, val], idx) => (
+                                                    <div
+                                                        key={idx}
+                                                        className="p-4 rounded-xl bg-slate-50 border border-slate-100 group hover:bg-sky-50 transition-colors"
+                                                    >
+                                                        <span className="block text-[9px] text-sky-500 font-black uppercase mb-1">
+                                                            {key}
+                                                        </span>
+                                                        <span className="text-slate-700 font-medium leading-relaxed">
+                                                            {val}
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button className="mt-10 w-full py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-sky-600 transition-all shadow-xl shadow-slate-200">
+                                        Inquire About Courses
+                                    </button>
+                                </div>
                             </div>
                         </motion.div>
                     </div>

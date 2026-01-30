@@ -124,8 +124,8 @@
 
 export const teachersData = [
     {
-        name: "Dr. Md. Nurul Absar",
-        profilePhoto: "/Dr. Md. Nurul Absar.jpg",
+        name: "Dr. Md. Nurul Absar Azhary",
+        profilePhoto: "/Dr. Md. Nurul Absar.png",
         designation:
             "Head Teacher, Hadith Department, Darul Uloom Muinul Islam Hathazari, Chattogram",
         positions: [
@@ -139,8 +139,8 @@ export const teachersData = [
         }
     },
     {
-        name: "Muhammad Mosharraf Hossain",
-        profilePhoto: "/Muhammad Mosharraf Hossain.jpeg",
+        name: "Muhammad Mosharraf Hossain Azhary",
+        profilePhoto: "/Muhammad Mosharraf Hossain.png",
         designation:
             "Muhaddith, Darul Uloom Muinul Islam Hathazari, Chattogram",
         positions: [
@@ -155,8 +155,8 @@ export const teachersData = [
         }
     },
     {
-        name: "Md. Mosharraf Hossain",
-        profilePhoto: "/teacher1.jpeg",
+        name: "Md. Mosharraf Hossain Azhary",
+        profilePhoto: "/Mosharraf Hossain.png",
         designation: "Dawrah-e-Hadith, Patiya",
         positions: [],
         education: {
@@ -168,8 +168,8 @@ export const teachersData = [
         }
     },
     {
-        name: "Shahedul Islam Patwari",
-        profilePhoto: "/Shahedul Islam Patwari.jpeg",
+        name: "Shahedul Islam Patwari Azhary",
+        profilePhoto: "/Shahedul Islam Patwari.png",
         designation:
             "Dawrah-e-Hadith & Ifta, Jamia Arabia Imdadul Faridabad, Dhaka",
         positions: [
@@ -184,7 +184,7 @@ export const teachersData = [
         }
     },
     {
-        name: "Abdul Aziz Tarfadar",
+        name: "Abdul Aziz Tarfadar Azhary",
         profilePhoto: "/Abdul Aziz Tarfadar.jpeg",
         designation:
             "Hifzul Quran, Nawapara Markaz Jame Mosque Hifzkhana, Jashore",
@@ -199,7 +199,7 @@ export const teachersData = [
         }
     },
     {
-        name: "Abdur Rahman Muhammad Nawab",
+        name: "Abdur Rahman Muhammad Nawab Azhary",
         profilePhoto: "/Abdur Rahman Muhammad Nawab.jpeg",
         designation:
             "Dawrah-e-Hadith, Jamia Islamia Halimia Madhupur, Bangladesh",
@@ -215,8 +215,8 @@ export const teachersData = [
         }
     },
     {
-        name: "Omar Faruq",
-        profilePhoto: "/teacher1.jpeg",
+        name: "Omar Faruq Azhary",
+        profilePhoto: "/Omar Faruq.png",
         designation:
             "Dawrah-e-Hadith, Jamia Arabia Imdadul Uloom, Faridabad, Dhaka",
         positions: [
@@ -243,6 +243,35 @@ export const teachersData = [
         }
     },
     {
+        name: "Muhammad Atiqur Rahman (Zaif) Azhary",
+        profilePhoto: "/Muhammad Atiqur Rahman.png",
+        designation:
+            "Dawrah & Ifta, Markazush Sheikh Zakariyya lil Buhusil Islamiyyah, Dhaka",
+        positions: [
+            "Comparative Religion, Philosophy & Research, Ma'hadul Fikri wa Dirasatil Islamiyyah, Dhaka"
+        ],
+        education: {
+            "Bachelor (Ongoing)":
+                "Faculty of Shariah & Law, Al-Azhar University, Egypt"
+        }
+    },
+    {
+        name: "Md. Nazmul Arifeen Azhary",
+        profilePhoto: "https://i.ibb.co/CpP2YJ8S/02-2.jpg",
+        designation:
+            "Dawrah-e-Hadith, Jamia Rahmania Arabia, Dhaka",
+        positions: [],
+        education: {
+            "Takhassus": "Jamia Rahmania Arabia, Dhaka",
+            "Arabic Diploma":
+                "Islamic University of Riyadh, King Abdul Aziz University Jeddah, Saudi Arabia & Riwaqul Jami'il Azhar, Egypt",
+            "Bachelor (Ongoing)":
+                "Faculty of Islamic & Arabic Studies, Al-Azhar University, Egypt"
+        }
+    },
+
+    // 🔽 Non-Azhary teachers (original order preserved)
+    {
         name: "Mufti Abdur Rahman Sa'di",
         profilePhoto: "https://i.ibb.co/NnQ9fxqy/ei-1749462859973-removebg-preview.png",
         designation:
@@ -258,30 +287,17 @@ export const teachersData = [
         }
     },
     {
-        name: "Muhammad Atiqur Rahman (Zaif)",
-        profilePhoto: "/teacher1.jpeg",
+        name: "Athar Idris Rahmani",
+        profilePhoto: "/Athar Idris Rahmani.png",
         designation:
-            "Dawrah & Ifta, Markazush Sheikh Zakariyya lil Buhusil Islamiyyah, Dhaka",
+            "Muhaddith, Al-Jamiatul Karimiyah Nurul Uloom Jumma Para Madrasa, Rangpur",
         positions: [
-            "Comparative Religion, Philosophy & Research, Ma'hadul Fikri wa Dirasatil Islamiyyah, Dhaka"
+            "Khatib, Alamnagar Central Colony Jame Masjid, Rangpur City Corporation, Rangpur, Bangladesh"
         ],
         education: {
-            "Bachelor (Ongoing)":
-                "Faculty of Shariah & Law, Al-Azhar University, Egypt"
-        }
-    },
-    {
-        name: "Md. Nazmul Arifeen",
-        profilePhoto: "https://i.ibb.co/CpP2YJ8S/02-2.jpg",
-        designation:
-            "Dawrah-e-Hadith, Jamia Rahmania Arabia, Dhaka",
-        positions: [],
-        education: {
-            "Takhassus": "Jamia Rahmania Arabia, Dhaka",
-            "Arabic Diploma":
-                "Islamic University of Riyadh, King Abdul Aziz University Jeddah, Saudi Arabia & Riwaqul Jami'il Azhar, Egypt",
-            "Bachelor (Ongoing)":
-                "Faculty of Islamic & Arabic Studies, Al-Azhar University, Egypt"
+            "Hifz": "Al-Jamiatul Karimiyah Nurul Uloom, Jumma Para, Rangpur",
+            "Dawrah": "Jamia Rahmaniya Arabia, Sat Masjid, Mohammadpur, Dhaka",
+            "Ifta": "Jamia Islamia Darul Uloom Akbar Complex, Mirpur-1"
         }
     }
 ];

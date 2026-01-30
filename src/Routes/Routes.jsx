@@ -20,6 +20,14 @@ import TeacherExamSystem from "../Pages/Dashboard/Teacher/TeacherExamSystem/Teac
 import TeacherHomeworkManagement from "../Pages/Dashboard/Teacher/TeacherHomeworkManagement/TeacherHomeworkManagement";
 import TeacherStudents from "../Pages/Dashboard/Teacher/TeacherStudents/TeacherStudents";
 import TeachersPage from "../Pages/TeachersPage/TeachersPage";
+import PrivateRoute from "./PrivateRoutes";
+import Login from "../Pages/Authentication/Login/Login";
+import Registration from "../Pages/Authentication/Registration/Registration";
+import VerifyEmail from "./VerifyEmail";
+import DawraAdmin from "../Pages/Dashboard/Admin/DawraAdmin/DawraAdmin";
+import EnrolledRoute from "./EnrolledRoute";
+import BlockedUser from "../Common/BlockedUser/BlockedUser";
+import DawraAdmissionExam from "../Pages/Exam/DawraAdmissionExam";
 
 
 
@@ -50,13 +58,43 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/apply",
-                element: <DawraStudentRegistration />
+                element: <PrivateRoute><DawraStudentRegistration /></PrivateRoute>
+            },
+            // Login
+
+            {
+                path: "/login",
+                element: <Login />
+            },
+
+            // Register
+
+            {
+                path: "/register",
+                element: <Registration />
             },
         ]
     },
     {
+        path: "/verify-email",
+        element: <VerifyEmail />
+    },
+    {
+        path: "/block-user",
+        element: <BlockedUser />
+    },
+    {
+        path: "/exam",
+        element: <DawraAdmissionExam />
+    },
+    {
         path: "/dashboard",
-        element: <DashboardLayout />, // Layout with sidebar & topbar
+        element: <>
+            <ScrollToTop />
+            <PrivateRoute>
+                <DashboardLayout />
+            </PrivateRoute>
+        </>,
         children: [
             {
                 index: true, // default page
@@ -65,7 +103,7 @@ export const router = createBrowserRouter([
             // Student Dashboard
             {
                 path: "payments",
-                element: <StudentPayments />
+                element: <EnrolledRoute><StudentPayments /></EnrolledRoute>
             },
             {
                 path: "classes",
@@ -108,6 +146,12 @@ export const router = createBrowserRouter([
             {
                 path: "my-students",
                 element: <TeacherStudents />
+            },
+
+            // Admin
+            {
+                path: "admin-enrollments",
+                element: <DawraAdmin />
             },
         ]
     }

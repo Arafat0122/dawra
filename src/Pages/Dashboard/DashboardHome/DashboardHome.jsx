@@ -1,5 +1,9 @@
 import { FiBookOpen, FiClock, FiCheckCircle, FiAlertCircle, FiTrendingUp, FiUsers, FiEdit3, FiDollarSign, FiLayers, FiUserCheck } from "react-icons/fi";
-import { devAuth } from "../../../assets/devAuth";
+import useAdmin from "../../../Hooks/useAdmin";
+import useTeacher from "../../../Hooks/useTeacher";
+import useStudent from "../../../Hooks/useStudent";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import { useContext } from "react";
 
 // --- REUSABLE COMPONENTS ---
 
@@ -92,20 +96,43 @@ const AdminDashboard = () => (
 // --- MAIN HOME COMPONENT ---
 
 const DashboardHome = () => {
-    const { user } = devAuth;
+    const { user } = useContext(AuthContext);
+
+    const [isAdmin, adminLoading] = useAdmin();
+    const [isTeacher, teacherLoading] = useTeacher();
+    const [isStudent, studentLoading] = useStudent();
+
+    const loading = adminLoading || teacherLoading || studentLoading;
+
+    if (loading) {
+        return <div className="p-6">Loading dashboard...</div>;
+    }
+
+    let roleLabel = "User";
+
+    if (isAdmin) roleLabel = "Administrator";
+    else if (isTeacher) roleLabel = "Teacher";
+    else if (isStudent) roleLabel = "Student";
 
     return (
         <div className="max-w-7xl mx-auto">
-            <WelcomeHero name={user.name} role={user.role} />
+            <WelcomeHero
+                name={user?.displayName || user?.name}
+                role={roleLabel}
+            />
 
             <section className="mb-6 flex justify-between items-center">
-                <h2 className="text-xl font-heading font-bold text-brand-navy">Overview Statistics</h2>
-                <button className="text-brand-blue text-sm font-bold hover:underline">Download Report</button>
+                <h2 className="text-xl font-heading font-bold text-brand-navy">
+                    Overview Statistics
+                </h2>
+                <button className="text-brand-blue text-sm font-bold hover:underline">
+                    Download Report
+                </button>
             </section>
 
-            {user.role === "student" && <StudentDashboard />}
-            {user.role === "teacher" && <TeacherDashboard />}
-            {user.role === "admin" && <AdminDashboard />}
+            {isStudent && <StudentDashboard />}
+            {isTeacher && <TeacherDashboard />}
+            {isAdmin && <AdminDashboard />}
         </div>
     );
 };

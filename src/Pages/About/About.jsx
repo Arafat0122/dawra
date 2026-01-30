@@ -1,6 +1,5 @@
 import { motion } from "framer-motion"; // Add this line to fix the error
 import { FiBookOpen, FiStar, FiAward } from "react-icons/fi";
-import TeachersPage from "../TeachersPage/TeachersPage";
 
 const About = () => {
     return (
@@ -80,11 +79,6 @@ const About = () => {
                         </p>
                     </div>
                 </div>
-            </section>
-
-            {/* --- FACULTY SECTION --- */}
-            <section className="pt-16">
-                <TeachersPage />
             </section>
         </main>
     );

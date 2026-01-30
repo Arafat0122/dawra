@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FiGlobe, FiLock, FiSmartphone, FiAward, FiShield, FiCheckCircle } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const whyUsData = [
     {
@@ -67,8 +68,8 @@ const WhyUsSection = () => {
                             key={idx}
                             whileHover={{ y: -8 }}
                             className={`p-10 rounded-[2.5rem] border transition-all duration-300 ${item.highlight
-                                    ? 'bg-slate-900 border-slate-900 text-white shadow-2xl shadow-sky-200'
-                                    : 'bg-slate-50 border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-sky-100/50'
+                                ? 'bg-slate-900 border-slate-900 text-white shadow-2xl shadow-sky-200'
+                                : 'bg-slate-50 border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-sky-100/50'
                                 }`}
                         >
                             <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-8 ${item.highlight ? 'bg-sky-500 text-white' : 'bg-white shadow-sm text-sky-600'
@@ -87,7 +88,7 @@ const WhyUsSection = () => {
                 </div>
 
                 {/* --- ADMISSION QUICK INFO --- */}
-                <div className="mt-16 p-2 bg-slate-100 rounded-[3rem] inline-flex flex-wrap items-center gap-1 md:gap-8 overflow-hidden">
+                <div className="mt-16 p-3 md:p-2 bg-slate-100 rounded-[3rem] inline-flex flex-wrap justify-center items-center gap-3 md:gap-8 overflow-hidden">
                     <div className="bg-white px-8 py-4 rounded-[2.5rem] shadow-sm flex items-center gap-4">
                         <span className="text-xs font-black uppercase tracking-widest text-slate-400">Class Starts</span>
                         <span className="text-sky-600 font-black text-lg">15th Shawwal</span>
@@ -96,9 +97,11 @@ const WhyUsSection = () => {
                         <span className="text-xs font-black uppercase tracking-widest text-slate-400">Monthly Fee</span>
                         <span className="text-sky-600 font-black text-lg">৳1400</span>
                     </div>
-                    <button className="bg-sky-600 text-white px-10 py-4 rounded-[2.5rem] font-black text-xs uppercase tracking-[0.2em] hover:bg-slate-900 transition-colors">
-                        Enroll Now
-                    </button>
+                    <Link to={'/apply'}>
+                        <button className="bg-sky-600 text-white px-10 py-4 rounded-[2.5rem] font-black text-md uppercase tracking-[0.2em] hover:bg-slate-900 transition-colors">
+                            Enroll Now
+                        </button>
+                    </Link>
                 </div>
             </div>
         </section>
